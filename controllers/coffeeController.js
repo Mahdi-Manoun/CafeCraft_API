@@ -82,7 +82,7 @@ const editCoffeeInfo = async (req, res) => {
         }
 
         if (req.file) {
-            coffee.image_url = `/uploads/coffee/${req.file.filename}`;
+            coffee.image_url = `http://localhost:5000/uploads/coffee/${req.file.filename}`;
             console.log('New image path set:', coffee.image_url);
         }
 

@@ -83,7 +83,7 @@ const editWorkshopInfo = async (req, res) => {
         }
 
         if (req.file) {
-            workshop.image_url = `/uploads/workshop/${req.file.filename}`;
+            workshop.image_url = `http://localhost:5000/uploads/workshop/${req.file.filename}`;
             console.log('New image path set:', workshop.image_url);
         }
 

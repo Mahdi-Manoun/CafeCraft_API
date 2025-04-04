@@ -12,3 +12,4 @@ const storage = (folder) => multer.diskStorage({
 
 export const uploadWorkshop = multer({ storage: storage('workshop') });
 export const uploadCoffee = multer({ storage: storage('coffee') });
+export const uploadItem = multer({ storage: storage('item') });

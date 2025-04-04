@@ -8,5 +8,10 @@ node_modules/*
 .vscode/
 .idea/
 
+# images
+public/uploads/workshop/*
+public/uploads/coffee/*
+public/uploads/item/*
+
 # Others
 npm
