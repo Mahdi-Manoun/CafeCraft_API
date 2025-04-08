@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 // import cors from 'cors';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -20,13 +21,32 @@ import teammateRoutes from './routes/teammateRoutes.js';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(express.json());
+const ensureUploadFolders = async () => {
+    const uploadsPath = path.join(__dirname, 'public', 'uploads');
+    const requiredFolders = ['coffee', 'course', 'accessory', 'grinder', 'item', 'teammate', 'workshop', 'tt'];
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+    try {
+        // create folders for images
+        for (const folder of requiredFolders) {
+            const folderPath = path.join(uploadsPath, folder);
+            if (!fs.existsSync(folderPath)) {
+                fs.mkdirSync(folderPath);
+                console.log(`The folder ${folder} was created successfully.`);
+            }
+        }
+    } catch (err) {
+        console.error('An error occurred while creating folders:', err);
+        process.exit(1);
+    }
+}
+
+app.use(express.json());
 
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
@@ -51,6 +71,7 @@ mongoose.connect(process.env.CONNECTION_STR)
         try {
             await createAdmin();
             console.log('Admin account created successfully!');
+            ensureUploadFolders();
         } catch (adminError) {
             console.error('Error creating admin account:', adminError);
         }
