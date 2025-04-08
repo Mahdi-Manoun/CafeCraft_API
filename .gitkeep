@@ -1,2 +1,3 @@
 mkdir -p public/uploads/{workshop,coffee,course,item,accessory,grinder,teammate/default}
+
 touch public/uploads/{workshop,coffee,course,item,accessory,grinder}/.keep

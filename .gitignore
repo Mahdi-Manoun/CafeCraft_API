@@ -9,18 +9,20 @@ node_modules/*
 .idea/
 
 # images
+!public/uploads/workshop/
+!public/uploads/coffee/
+!public/uploads/course/
+!public/uploads/item/
+!public/uploads/accessory/
+!public/uploads/grinder/
+!public/uploads/teammate/
+
 public/uploads/workshop/*
-!public/uploads/workshop/.gitkeep
 public/uploads/coffee/*
-!public/uploads/coffee/.gitkeep
 public/uploads/course/*
-!public/uploads/course/.gitkeep
 public/uploads/item/*
-!public/uploads/item/.gitkeep
 public/uploads/accessory/*
-!public/uploads/accessory/.gitkeep
 public/uploads/grinder/*
-!public/uploads/grinder/.gitkeep
 public/uploads/teammate/*
 !public/uploads/teammate/default/
 !public/uploads/teammate/default/**
