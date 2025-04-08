@@ -9,13 +9,6 @@ node_modules/*
 .idea/
 
 # images
-!public/uploads/workshop/
-!public/uploads/coffee/
-!public/uploads/course/
-!public/uploads/item/
-!public/uploads/accessory/
-!public/uploads/grinder/
-!public/uploads/teammate/
 
 public/uploads/workshop/*
 public/uploads/coffee/*
