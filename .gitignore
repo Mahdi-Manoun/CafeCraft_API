@@ -16,7 +16,8 @@ public/uploads/item/*
 public/uploads/accessory/*
 public/uploads/grinder/*
 public/uploads/teammate/*
-!public/uploads/teammate/default/.gitkeep
+!public/uploads/teammate/default/
+!public/uploads/teammate/default/**
 
 # Others
 npm
