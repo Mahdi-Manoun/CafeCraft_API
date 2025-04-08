@@ -10,17 +10,17 @@ node_modules/*
 
 # images
 public/uploads/workshop/*
-!public/uploads/workshop/.keep
+!public/uploads/workshop/.gitkeep
 public/uploads/coffee/*
-!public/uploads/coffee/.keep
+!public/uploads/coffee/.gitkeep
 public/uploads/course/*
-!public/uploads/course/.keep
+!public/uploads/course/.gitkeep
 public/uploads/item/*
-!public/uploads/item/.keep
+!public/uploads/item/.gitkeep
 public/uploads/accessory/*
-!public/uploads/accessory/.keep
+!public/uploads/accessory/.gitkeep
 public/uploads/grinder/*
-!public/uploads/grinder/.keep
+!public/uploads/grinder/.gitkeep
 public/uploads/teammate/*
 !public/uploads/teammate/default/
 !public/uploads/teammate/default/**
