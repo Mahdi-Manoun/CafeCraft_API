@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-// import cors from 'cors';
+import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -48,6 +48,7 @@ const ensureUploadFolders = async () => {
 }
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
