@@ -1,5 +1,4 @@
 import express from 'express';
-import { uploadGrinder } from '../middlewares/upload.js';
 import {
     addGrinder,
     editGrinderInfo,
@@ -7,14 +6,18 @@ import {
     removeGrinder
 } from '../controllers/coffeeGrinderController.js';
 
+// middlewares
+import isAdmin from '../middlewares/isAdmin.js';
+import { uploadGrinder } from '../middlewares/upload.js';
+
 const router = express.Router();
 
-router.post('/', uploadGrinder.single('image_url'), addGrinder);
+router.post('/', isAdmin, uploadGrinder.single('image_url'), addGrinder);
 
 router.get('/', getGrinders);
 
-router.patch('/:_id', uploadGrinder.single('image_url'), editGrinderInfo);
+router.patch('/:_id', isAdmin, uploadGrinder.single('image_url'), editGrinderInfo);
 
-router.delete('/:_id', removeGrinder);
+router.delete('/:_id', isAdmin, removeGrinder);
 
 export default router;

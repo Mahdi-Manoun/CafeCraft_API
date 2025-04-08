@@ -17,6 +17,7 @@ import itemRoutes from './routes/itemRoutes.js';
 import grinderRoutes from './routes/coffeeGrinderRoutes.js';
 import accessoryRoutes from './routes/coffeeAccessoryRoutes.js';
 import teammateRoutes from './routes/teammateRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 
 
 dotenv.config();
@@ -29,7 +30,7 @@ const port = process.env.PORT || 5000;
 
 const ensureUploadFolders = async () => {
     const uploadsPath = path.join(__dirname, 'public', 'uploads');
-    const requiredFolders = ['coffee', 'course', 'accessory', 'grinder', 'item', 'teammate', 'workshop', 'tt'];
+    const requiredFolders = ['coffee', 'course', 'accessory', 'grinder', 'item', 'teammate', 'workshop'];
 
     try {
         // create folders for images
@@ -50,6 +51,7 @@ app.use(express.json());
 
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
+app.use('/api/auth', adminRoutes)
 app.use('/api/courses', courseRoutes);
 app.use('/api/workshops', workshopRoutes);
 app.use('/api/coffees', coffeeRoutes);
