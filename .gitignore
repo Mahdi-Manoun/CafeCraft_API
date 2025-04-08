@@ -10,17 +10,17 @@ node_modules/*
 
 # images
 public/uploads/workshop/*
-!public/uploads/workshop/
+!public/uploads/workshop/.keep
 public/uploads/coffee/*
-!public/uploads/coffee/
+!public/uploads/coffee/.keep
 public/uploads/course/*
-!public/uploads/course/
+!public/uploads/course/.keep
 public/uploads/item/*
-!public/uploads/item/
+!public/uploads/item/.keep
 public/uploads/accessory/*
-!public/uploads/accessory/
+!public/uploads/accessory/.keep
 public/uploads/grinder/*
-!public/uploads/grinder/
+!public/uploads/grinder/.keep
 public/uploads/teammate/*
 !public/uploads/teammate/default/
 !public/uploads/teammate/default/**
