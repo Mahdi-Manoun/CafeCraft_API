@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Grinder from '../models/coffeeGrinderModel.js';
 
+// add a grinder
 const addGrinder = async (req, res) => {
     let { title, subItems, description, additional_info, details } = req.body;
     const imageUrl = req.file ? `http://localhost:5000/uploads/grinder/${req.file.filename}` : null;
@@ -9,12 +10,10 @@ const addGrinder = async (req, res) => {
     description = description?.trim();
 
     try {
-        // Validate required fields
         if (!title) {
             return res.status(400).json({ error: 'Title is required' });
         }
 
-        // Create new grinder
         const newGrinder = new Grinder({
             title,
             subItems,
@@ -24,7 +23,6 @@ const addGrinder = async (req, res) => {
             image_url: imageUrl
         });
 
-        // Save to database
         const savedGrinder = await newGrinder.save();
 
         return res.status(201).json(savedGrinder);
@@ -35,6 +33,7 @@ const addGrinder = async (req, res) => {
 };
 
 
+// get all grinders
 const getGrinders = async (req, res) => {
     try {
         const grinders = await Grinder.find();
@@ -46,6 +45,7 @@ const getGrinders = async (req, res) => {
 };
 
 
+// edit an grinder info
 const editGrinderInfo = async (req, res) => {
     try {
         const { _id } = req.params;
@@ -73,6 +73,7 @@ const editGrinderInfo = async (req, res) => {
 };
 
 
+// remove an grinder
 const removeGrinder = async (req, res) => {
     const { _id } = req.params;
 

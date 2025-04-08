@@ -51,6 +51,7 @@ app.use(express.json());
 
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
+// routes
 app.use('/api/auth', adminRoutes)
 app.use('/api/courses', courseRoutes);
 app.use('/api/workshops', workshopRoutes);
@@ -60,12 +61,14 @@ app.use('/api/grinders', grinderRoutes);
 app.use('/api/accessories', accessoryRoutes);
 app.use('/api/teammates', teammateRoutes);
 
+// middleware
 app.use((req, res, next) => {
     console.log(req.path, req.method);
     next();
 });
 
 
+// db connection
 mongoose.connect(process.env.CONNECTION_STR)
     .then(async () => {
         console.log('Connected to db');

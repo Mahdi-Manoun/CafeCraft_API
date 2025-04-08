@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Teammate from '../models/teammateModel.js';
 
+// add a teammate
 const addTeammate = async (req, res) => {
     let { name, role } = req.body;
     const pathUrl = 'http://localhost:5000/uploads/teammate';
@@ -26,6 +27,7 @@ const addTeammate = async (req, res) => {
 };
 
 
+// get all teammates
 const getTeammates = async (req, res) => {
     try {
         const teammates = await Teammate.find();
@@ -37,6 +39,7 @@ const getTeammates = async (req, res) => {
 };
 
 
+// edit an teammate info
 const editTeammateInfo = async (req, res) => {
     const { _id } = req.params;
     const { name, role } = req.body;
@@ -69,7 +72,6 @@ const editTeammateInfo = async (req, res) => {
 
         console.log('Uploaded file:', req.file);
 
-
         return res.status(200).json({
             success: true,
             message: 'Teammate updated successfully!',
@@ -82,6 +84,7 @@ const editTeammateInfo = async (req, res) => {
 };
 
 
+// remove an teammate
 const removeTeammate = async (req, res) => {
     const { _id } = req.params;
 

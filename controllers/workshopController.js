@@ -1,6 +1,7 @@
 import Workshop from '../models/workshopModel.js';
 import mongoose from 'mongoose';
 
+// add a workshop
 const addWorkshop = async (req, res) => {
     let { title, length_value, length_unit, class_size, description } = req.body;
     const imageUrl = req.file ? `http://localhost:5000/uploads/workshop/${req.file.filename}` : null;
@@ -51,6 +52,7 @@ const addWorkshop = async (req, res) => {
 };
 
 
+// get all workshops
 const getWorkshops = async (req, res) => {
     try {
         const workshops = await Workshop.find();
@@ -62,6 +64,7 @@ const getWorkshops = async (req, res) => {
 };
 
 
+// edit an workshop info
 const editWorkshopInfo = async (req, res) => {
     const { _id } = req.params;
     const { title, length_value, length_unit, class_size, description } = req.body;
@@ -134,6 +137,7 @@ const editWorkshopInfo = async (req, res) => {
 };
 
 
+// remove an workshop
 const removeWorkshop = async (req, res) => {
     const { _id } = req.params;
 

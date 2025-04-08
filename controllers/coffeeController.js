@@ -1,6 +1,7 @@
 import Coffee from '../models/coffeeModel.js';
 import mongoose from 'mongoose';
 
+// add a coffee
 const addCoffee = async (req, res) => {
     let { name, country, weTaste, process, score } = req.body;
     const imageUrl = req.file ? `http://localhost:5000/uploads/coffee/${req.file.filename}` : null;
@@ -50,6 +51,7 @@ const addCoffee = async (req, res) => {
 };
 
 
+// get all coffees
 const getCoffees = async (req, res) => {
     try {
         const coffees = await Coffee.find();
@@ -61,6 +63,7 @@ const getCoffees = async (req, res) => {
 };
 
 
+// edit an coffee info
 const editCoffeeInfo = async (req, res) => {
     const { _id } = req.params;
     const { name, country, weTaste, process, score } = req.body;
@@ -121,6 +124,7 @@ const editCoffeeInfo = async (req, res) => {
 };
 
 
+// remove an coffee
 const removeCoffee = async (req, res) => {
     const { _id } = req.params;
 

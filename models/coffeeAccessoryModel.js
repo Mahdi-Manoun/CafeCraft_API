@@ -19,7 +19,7 @@ const coffeeAccessorySchema = new mongoose.Schema({
     }
 });
 
-// create a Accessory model for schema
+// create a accessory model for schema
 const Accessory = new mongoose.model('Accessory', coffeeAccessorySchema);
 
 export default Accessory;

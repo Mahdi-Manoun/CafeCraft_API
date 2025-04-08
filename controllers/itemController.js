@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Item from '../models/itemModel.js';
 
+// add a item
 const addItem = async (req, res) => {
     let { category, title, description, additional_info, large_info } = req.body;
     const imageUrl = req.file ? `http://localhost:5000/uploads/item/${req.file.filename}` : null;
@@ -34,6 +35,7 @@ const addItem = async (req, res) => {
 };
 
 
+// get all items
 const getItems = async (req, res) => {
     try {
         const items = await Item.find();
@@ -45,6 +47,7 @@ const getItems = async (req, res) => {
 };
 
 
+// edit an item info
 const editItemInfo = async (req, res) => {
     const { _id } = req.params;
     const { category, title, description, additional_info, large_info } = req.body;
@@ -92,6 +95,7 @@ const editItemInfo = async (req, res) => {
 };
 
 
+// remove an item
 const removeItem = async (req, res) => {
     const { _id } = req.params;
 

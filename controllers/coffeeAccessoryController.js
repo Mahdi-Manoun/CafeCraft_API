@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Accessory from '../models/coffeeAccessoryModel.js';
 
+// add a coffee accessory
 const addAccessory = async (req, res) => {
     try {
         let { title, subitems, image_url } = req.body;
@@ -27,6 +28,7 @@ const addAccessory = async (req, res) => {
 };
 
 
+// get all coffee accessories
 const getAccessories = async (req, res) => {
     try {
         const accessories = await Accessory.find();
@@ -38,6 +40,7 @@ const getAccessories = async (req, res) => {
 };
 
 
+// edit an coffee accessory info
 const editAccessoryInfo = async (req, res) => {
     try {
         const { _id } = req.params;
@@ -64,6 +67,7 @@ const editAccessoryInfo = async (req, res) => {
 };
 
 
+// remove an coffee accessory
 const removeAccessory = async (req, res) => {
     const { _id } = req.params;
 

@@ -1,6 +1,7 @@
 import multer from 'multer';
 import path from 'path';
 
+// file filtering: for images only
 const fileFilter = (req, file, cb) => {
     const allowedTypes = /jpeg|jpg|png|webp/;
     const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());

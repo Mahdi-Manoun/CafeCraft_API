@@ -32,7 +32,7 @@ const coffeeGrinderSchema = new mongoose.Schema({
     }
 });
 
-// create a Grinder model for schema
+// create a grinder model for schema
 const Grinder = new mongoose.model('Grinder', coffeeGrinderSchema);
 
 export default Grinder;

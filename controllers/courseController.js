@@ -48,6 +48,7 @@ const addCourse = async (req, res) => {
 };
 
 
+// get all courses
 const getCourses = async (req, res) => {
     try {
         const courses = await Course.find();
@@ -59,6 +60,7 @@ const getCourses = async (req, res) => {
 };
 
 
+// edit an course info
 const editCourseInfo = async (req, res) => {
     const { _id } = req.params;
     let { title, subtitle, abbreviation, overview, objectives, topics, structure, target_audience } = req.body;
@@ -112,6 +114,7 @@ const editCourseInfo = async (req, res) => {
 };
 
 
+// remove an course
 const removeCourse = async (req, res) => {
     const { _id } = req.params;
 
