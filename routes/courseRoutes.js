@@ -8,16 +8,16 @@ import {
 
 // middlewares
 // import isAdmin from '../middlewares/isAdmin.js';
-import require_course_fields from '../middlewares/require_course_fields.js';
+import { uploadCourse } from '../middlewares/upload.js';
 
 
 const router = express.Router();
 
-router.post('/', require_course_fields, addCourse);
+router.post('/', uploadCourse.single('image_url'), addCourse);
 
 router.get('/', getCourses);
 
-router.patch('/:_id', editCourseInfo);
+router.patch('/:_id', uploadCourse.single('image_url'), editCourseInfo);
 
 router.delete('/:_id', removeCourse);
 

@@ -21,7 +21,7 @@ const courseSchema = new mongoose.Schema({
     ],
     structure: { type: [String], required: true },
     target_audience: { type: [String], required: true },
-    customizable: { type: Boolean, default: false }
+    image_url: { type: String, default: null }
 });
 
 

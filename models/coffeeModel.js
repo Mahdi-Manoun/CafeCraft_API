@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // create a coffee schema
 const coffeeSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    country: { type: String, required: true },
+    country: { type: String, default: '' },
     weTaste: { type: [String], required: true },
     process: { type: String, required: true },
     score: { type: Number, required: true, min: 0, max: 100 },

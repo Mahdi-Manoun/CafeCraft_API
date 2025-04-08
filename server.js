@@ -12,8 +12,11 @@ import createAdmin from './config/adminSetup.js';
 import courseRoutes from './routes/courseRoutes.js';
 import workshopRoutes from './routes/workshopRoutes.js';
 import coffeeRoutes from './routes/coffeeRoutes.js';
-import categoryRoutes from './routes/categoryRoutes.js';
 import itemRoutes from './routes/itemRoutes.js';
+import grinderRoutes from './routes/coffeeGrinderRoutes.js';
+import accessoryRoutes from './routes/coffeeAccessoryRoutes.js';
+import teammateRoutes from './routes/teammateRoutes.js';
+
 
 dotenv.config();
 
@@ -30,8 +33,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 app.use('/api/courses', courseRoutes);
 app.use('/api/workshops', workshopRoutes);
 app.use('/api/coffees', coffeeRoutes);
-app.use('/api/categories', categoryRoutes);
 app.use('/api/items', itemRoutes);
+app.use('/api/grinders', grinderRoutes);
+app.use('/api/accessories', accessoryRoutes);
+app.use('/api/teammates', teammateRoutes);
 
 app.use((req, res, next) => {
     console.log(req.path, req.method);

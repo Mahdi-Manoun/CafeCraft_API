@@ -2,24 +2,25 @@ import mongoose from 'mongoose';
 import Item from '../models/itemModel.js';
 
 const addItem = async (req, res) => {
-    let { category_id, title, description, additional_info } = req.body;
+    let { category, title, description, additional_info, large_info } = req.body;
     const imageUrl = req.file ? `http://localhost:5000/uploads/item/${req.file.filename}` : null;
 
     title = title?.trim();
     description = description?.trim();
     try {
-        let errorList = [];
-        if (!category_id || !mongoose.Types.ObjectId.isValid(category_id)) errorList.push('Invalid item ID.');
-        if (!title) errorList.push('title should not be empty or invalid.');
-        if (errorList.length > 0) {
-            return res.status(400).json({ errors: errorList });
+        let emptyFields = [];
+        if(!category) emptyFields.push('category');
+        if (!title) emptyFields.push('title');
+        if (emptyFields.length > 0) {
+            return res.status(400).json({ error: `Fields "${emptyFields.join(', ')}" should not be empty or invalid.` });
         }
 
         const newItem = new Item({
-            category_id,
+            category,
             title,
             description,
             additional_info,
+            large_info,
             image_url: imageUrl
         });
 
@@ -30,7 +31,7 @@ const addItem = async (req, res) => {
         console.log(error)
         return res.status(500).json({ error: 'Internal server error.' });
     }
-}
+};
 
 
 const getItems = async (req, res) => {
@@ -46,7 +47,7 @@ const getItems = async (req, res) => {
 
 const editItemInfo = async (req, res) => {
     const { _id } = req.params;
-    const { category_id, title, description, additional_info } = req.body;
+    const { category, title, description, additional_info, large_info } = req.body;
 
     try {
         if (!_id || !mongoose.Types.ObjectId.isValid(_id)) {
@@ -64,22 +65,16 @@ const editItemInfo = async (req, res) => {
             });
         }
 
-        if (category_id && !mongoose.Types.ObjectId.isValid(category_id)) {
-            return res.status(400).json({
-                error: 'Invalid ID format.',
-                message: 'The provided item ID is not valid.'
-            });
-        }
-
         if (req.file) {
             item.image_url = `http://localhost:5000/uploads/item/${req.file.filename}`;
             console.log('New image path set:', item.image_url);
         }
 
-        if (category_id) item.category_id = category_id.trim();
+        if (category) item.category = category.trim();
         if (title) item.title = title.trim();
         if (description) item.description = description.trim();
-        if (additional_info) item.additional_info = additional_info.trim();
+        if (additional_info) item.additional_info = additional_info;
+        if (large_info) item.large_info = large_info;
 
         const updatedItem = await item.save();
 
@@ -121,7 +116,6 @@ const removeItem = async (req, res) => {
         return res.status(500).json({ error: 'Internal server error.' });
     }
 };
-
 
 export {
     addItem,

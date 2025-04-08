@@ -13,7 +13,7 @@ const addCoffee = async (req, res) => {
     try {
         const errorList = [];
 
-        if (!name || !country || !weTaste || !process || !score) {
+        if (!name || !weTaste || !process || !score) {
             errorList.push('All fields are required.');
         }
 

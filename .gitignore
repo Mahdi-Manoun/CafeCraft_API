@@ -11,7 +11,12 @@ node_modules/*
 # images
 public/uploads/workshop/*
 public/uploads/coffee/*
+public/uploads/course/*
 public/uploads/item/*
+public/uploads/accessory/*
+public/uploads/grinder/*
+public/uploads/teammate/*
+!public/uploads/teammate/default/.gitkeep
 
 # Others
 npm

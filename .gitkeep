@@ -1,0 +1,2 @@
+git add public/uploads/teammate/default/.gitkeep
+git commit -m "Add default folder for default user image"
